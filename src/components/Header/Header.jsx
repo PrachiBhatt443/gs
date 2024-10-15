@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
+// Initialize SpeechRecognition API
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
 const Header = ({ onSearch }) => {
   const navigationLinks = [
     { label: "Home", Path: "/" },
-    // { label: "WishList", Path: "/wishlist" },
+    { label: "WishList", Path: "/wishlist" },
     { label: "About", Path: "/about" },
-    // { label: "Feedback", Path: "/feedback" },
+    { label: "Feedback", Path: "/feedback" },
     { label: "Contact", Path: "/contact" },
   ];
 
   const [showMobileSidebar, setShowMobileSidebar] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [listening, setListening] = useState(false); // Track if voice input is active
 
   const handleItemClick = () => {
     setShowMobileSidebar(true);
@@ -22,6 +28,34 @@ const Header = ({ onSearch }) => {
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
     onSearch(e.target.value); // Pass search term to App component
+  };
+
+  // Start voice recognition
+  const handleVoiceSearch = () => {
+    if (listening) {
+      recognition.stop(); // Stop if already listening
+      setListening(false);
+    } else {
+      recognition.start(); // Start listening
+      setListening(true);
+    }
+
+    recognition.onresult = (event) => {
+      const spokenWords = event.results[0][0].transcript;
+      setSearchTerm(spokenWords); // Set the voice input as the search term
+      onSearch(spokenWords); // Pass it to the parent component
+      setListening(false); // Stop listening after a result
+    };
+
+    recognition.onspeechend = () => {
+      recognition.stop();
+      setListening(false); // Stop listening when speech ends
+    };
+
+    recognition.onerror = (event) => {
+      console.error(event.error); // Handle any recognition errors
+      setListening(false);
+    };
   };
 
   return (
@@ -34,7 +68,7 @@ const Header = ({ onSearch }) => {
               onClick={() => showMobileSidebar && setShowMobileSidebar(false)}
               className="project-title"
             >
-              GyanSetu
+              AR Webstore
             </Link>
           </h3>
           <div
@@ -53,13 +87,18 @@ const Header = ({ onSearch }) => {
         </div>
 
         {/* Search Bar */}
-        <input
-          type="text"
-          placeholder="Search for products..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-bar"
-        />
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-bar"
+          />
+          <button onClick={handleVoiceSearch} className="voice-search-btn">
+            🎤 {listening ? "Listening..." : "Voice Search"}
+          </button>
+        </div>
 
         {/* Desktop Navigation */}
       </nav>
