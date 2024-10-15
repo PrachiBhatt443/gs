@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.6.2/aframe/build/aframe-ar.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <!-- AR.js Scene -->
+    <a-scene embedded arjs='sourceType: webcam;' renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false">
+
+      <!-- Image marker tracking setup -->
+      <a-marker type="pattern" url="A.patt">
+        
+        <!-- First 3D Model -->
+        <a-entity gltf-model="./3dmodel/Skeleton/1/scene.gltf" scale="0.5 0.5 0.5" position="0 0 0"></a-entity>
+        
+        <!-- Second 3D Model -->
+        <a-entity gltf-model="./3dmodel/Skeleton/2/scene.gltf" scale="0.5 0.5 0.5" position="1 0 0"></a-entity>
+        
+        <!-- Third 3D Model -->
+        <a-entity gltf-model="./3dmodel/Skeleton/3/scene.gltf" scale="0.5 0.5 0.5" position="-1 0 0"></a-entity>
+        
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
