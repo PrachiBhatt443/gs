@@ -8,13 +8,13 @@ const SpeechRecognition =
 const recognition = new SpeechRecognition();
 
 const Header = ({ onSearch }) => {
-  const navigationLinks = [
-    { label: "Home", Path: "/" },
-    { label: "WishList", Path: "/wishlist" },
-    { label: "About", Path: "/about" },
-    { label: "Feedback", Path: "/feedback" },
-    { label: "Contact", Path: "/contact" },
-  ];
+  // const navigationLinks = [
+  //   { label: "Home", Path: "/" },
+  //   { label: "WishList", Path: "/wishlist" },
+  //   { label: "About", Path: "/about" },
+  //   { label: "Feedback", Path: "/feedback" },
+  //   { label: "Contact", Path: "/contact" },
+  // ];
 
   const [showMobileSidebar, setShowMobileSidebar] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -90,27 +90,18 @@ const Header = ({ onSearch }) => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for products..."
+            placeholder="Search..."
             value={searchTerm}
             onChange={handleSearchChange}
             className="search-bar"
           />
           <button onClick={handleVoiceSearch} className="voice-search-btn">
-            🎤 {listening ? "Listening..." : "Voice Search"}
+             {listening ? "Listening..." : "🎤"}
           </button>
         </div>
 
         {/* Desktop Navigation */}
       </nav>
-      <ul className={`desktop-nav ${showMobileSidebar ? "" : "show"}`}>
-        {navigationLinks.map((items, key) => {
-          return (
-            <li key={key} onClick={handleItemClick}>
-              <Link to={items.Path}>{items.label}</Link>
-            </li>
-          );
-        })}
-      </ul>
     </header>
   );
 };
