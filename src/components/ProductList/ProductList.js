@@ -15,6 +15,10 @@ import Image9 from '../../assets/images/img-9.jpg';
 import Image10 from '../../assets/images/img-10.jpg';
 import Image11 from '../../assets/images/img-11.jpg';
 import Image12 from '../../assets/images/img-12.jpg';
+import motor from '../../assets/images/motor.jpg';
+import ss from '../../assets/images/ss.png';
+import liver from '../../assets/images/liver.png';
+import lungs from '../../assets/images/lungs.png';
 
 const ProductList = ({ addToWishlist, wishlist, removeFromWishlist, searchTerm }) => {
   // Filter products based on search term
@@ -22,7 +26,7 @@ const ProductList = ({ addToWishlist, wishlist, removeFromWishlist, searchTerm }
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
+  const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7,motor,ss,liver,lungs];
   const images2 = [Image8, Image9, Image10, Image11, Image12];
 
   return (
