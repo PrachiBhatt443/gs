@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="contact" id="contact">
       <div class="last">
-        <p>@ 2023 AR-Website | All Rights Reserved</p>
+        <p>@ 2024 Made by Team Archies</p>
       </div>
     </div>
   );
