@@ -171,7 +171,7 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
       <LazyLoad>
         {/* Card content below the model-viewer */}
         <div className="qr-sec">
-          {!ARSupported && (
+          {/* {!ARSupported && (
             <QRCode
               id={item.name}
               value={window.location.href}
@@ -181,9 +181,11 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
               level="H"
               includeMargin
             />
-          )}
+          )} */}
 
-          <div className="product-details">
+          <div className='pname'>{item.name}</div>
+
+          {/* <div className="product-details">
             <div>
               <div className="pname">{item.name}</div>
               <div className="rating-sec">
@@ -202,7 +204,7 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
             <button className="add-icon" onClick={handleAddToWishlist}>
               {isInWishlist ? '-' : '+'}
             </button>
-          </div>
+          </div> */}
         </div>
       </LazyLoad>
     </div>
