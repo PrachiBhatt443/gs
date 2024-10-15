@@ -197,14 +197,14 @@ const Header = ({ onSearch }) => {
             className="search-bar"
           />
           <button onClick={handleVoiceSearch} className="voice-search-btn">
-            {listening ? "Listening..." : <FaMicrophone style={{ color: "black" }} size={20} />}
+            {listening ? <FaMicrophone style={{ color: "red" }} size={20}/> : <FaMicrophone style={{ color: "black" }} size={20} />}
           </button>
 
           {/* Camera Icon */}
           <button
             onClick={() => window.location.href = " /3D/index.html"} // Redirect to your HTML file
             className="camera-btn"
-            style={{ marginLeft: "10px" }}
+            style={{ marginLeft: "10px", padding: "8px", marginBottom: "9px", borderRadius: "15%" }}
           >
             <FaCamera style={{ color: "black" }} size={20} />
           </button>
