@@ -162,9 +162,9 @@ const ModelViewer = ({ item, addToWishlist, removeFromWishlist, wishlist }) => {
           </button>
         ))}
         
-        <div class="controls variant_div">
+        {/* <div class="controls variant_div">
           <select ref={varient} id="variant"></select>
-        </div>
+        </div> */}
 
       </model-viewer>
         
