@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { FaMicrophone } from "react-icons/fa";
 
 // Initialize SpeechRecognition API
 const SpeechRecognition =
@@ -96,7 +97,7 @@ const Header = ({ onSearch }) => {
             className="search-bar"
           />
           <button onClick={handleVoiceSearch} className="voice-search-btn">
-             {listening ? "Listening..." : "🎤"}
+             {listening ? "Listening..." : <FaMicrophone style={{color:"black"}} size={20} />}
           </button>
         </div>
 
